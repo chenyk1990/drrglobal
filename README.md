@@ -1,10 +1,10 @@
 # drrglobal
-drrglobal: weak phases from global seismograms 
+DRRGlobal: recovering weak phases from global seismograms 
 
 ## Reference
 If you find this package useful, please do not forget to cite the following paper.
 
-    Chen and Chen, 2024. Uncovering the weak phases from global seismograms using the damped rank-reduction method, under review.
+    Chen and Chen, 2024. DRRGlobal: uncovering the weak phases from global seismograms using the damped rank-reduction method, under review.
     
 BibTeX:
 	
