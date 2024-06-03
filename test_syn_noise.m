@@ -1,15 +1,16 @@
 %% DEMO for using LRR method to reconstruct weak phases in global seismograms
 % initially by Yangkang Chen, 2017
-% Modified by XXXX, 20xx
+% Modified by Wei Chen, 2020
 % 
 clc;clear;close all;
 
+addpath(genpath('./'));
 
 %% part I (main phase)
 D=zeros(2000,20);
 h=zeros(20,1);
 for i=0:19
-    tmp=strcat('syn-mp-',num2str(i),'.mat');
+    tmp=strcat('data/syn-mp-',num2str(i),'.mat');
     load(tmp);
 %     figure(1);plot(data);pause(0.1);
     D(:,i+1)=data(:);
@@ -35,7 +36,7 @@ figure;yc_wigbh(D,h,t,1);ylim([-0.9,20]);
 D0=zeros(2000,20);
 h0=zeros(20,1);
 for i=0:19
-    tmp=strcat('syn-mp-coda-',num2str(i),'.mat');
+    tmp=strcat('data/syn-mp-coda-',num2str(i),'.mat');
     load(tmp);
 %     figure(1);plot(data);pause(0.1);
     D0(:,i+1)=data(:);
@@ -136,7 +137,7 @@ xlabel('Time (s)','Fontsize',20);
 set(gca,'Linewidth',2,'Fontsize',20); 
     print(gcf,'-depsc','-r400','syn_rr_noise2.eps');
  
- [ves1] = vespagram(D1-coda.*mask,h,s,t,order);
+ [ves1] = yc_vespagram(D1-coda.*mask,h,s,t,order);
 figure;imagesc(t(1:1401),s,ves1(1:1401,:)');colormap(seis);caxis([-0.01,0.01]);
 set(gca, 'YDir','normal')
 ylabel('Slowness (s/deg)','Fontsize',20);
@@ -160,7 +161,7 @@ annotation(gcf,'ellipse',...
 print(gcf,'-depsc','-r400','syn_ves_obs_noise2.eps')
 
 
-[ves3] = vespagram(D3-coda,h,s,t,order);
+[ves3] = yc_vespagram(D3-coda,h,s,t,order);
 figure;imagesc(t(1:1401),s,ves3(1:1401,:)');colormap(seis);caxis([-0.01,0.01]);
 set(gca, 'YDir','normal')
 ylabel('Slowness (s/deg)','Fontsize',20);
@@ -184,7 +185,7 @@ annotation(gcf,'ellipse',...
 print(gcf,'-depsc','-r400','syn_ves_pocs_noise2.eps')
 
 
-[ves5] = vespagram(D5-coda,h,s,t,order);
+[ves5] = yc_vespagram(D5-coda,h,s,t,order);
 figure;imagesc(t(1:1401),s,ves5(1:1401,:)');colormap(seis);caxis([-0.01,0.01]);
 set(gca, 'YDir','normal')
 ylabel('Slowness (s/deg)','Fontsize',20);
@@ -226,7 +227,7 @@ xlabel('Time (s)','Fontsize',20);
 set(gca,'Linewidth',2,'Fontsize',20); 
     print(gcf,'-depsc','-r400','syn_rr_noise4.eps');
  
- [ves1] = vespagram(D1-coda.*mask,h,s,t,order);
+ [ves1] = yc_vespagram(D1-coda.*mask,h,s,t,order);
 figure;imagesc(t(1:1401),s,ves1(1:1401,:)');colormap(seis);caxis([-0.01,0.01]);
 set(gca, 'YDir','normal')
 ylabel('Slowness (s/deg)','Fontsize',20);
@@ -250,7 +251,7 @@ annotation(gcf,'ellipse',...
 print(gcf,'-depsc','-r400','syn_ves_obs_noise4.eps')
 
 
-[ves3] = vespagram(D3-coda,h,s,t,order);
+[ves3] = yc_vespagram(D3-coda,h,s,t,order);
 figure;imagesc(t(1:1401),s,ves3(1:1401,:)');colormap(seis);caxis([-0.01,0.01]);
 set(gca, 'YDir','normal')
 ylabel('Slowness (s/deg)','Fontsize',20);
@@ -274,7 +275,7 @@ annotation(gcf,'ellipse',...
 print(gcf,'-depsc','-r400','syn_ves_pocs_noise4.eps')
 
 
-[ves5] = vespagram(D5-coda,h,s,t,order);
+[ves5] = yc_vespagram(D5-coda,h,s,t,order);
 figure;imagesc(t(1:1401),s,ves5(1:1401,:)');colormap(seis);caxis([-0.01,0.01]);
 set(gca, 'YDir','normal')
 ylabel('Slowness (s/deg)','Fontsize',20);
@@ -316,7 +317,7 @@ xlabel('Time (s)','Fontsize',20);
 set(gca,'Linewidth',2,'Fontsize',20); 
     print(gcf,'-depsc','-r400','syn_rr_noise6.eps');
  
- [ves1] = vespagram(D1-coda.*mask,h,s,t,order);
+ [ves1] = yc_vespagram(D1-coda.*mask,h,s,t,order);
 figure;imagesc(t(1:1401),s,ves1(1:1401,:)');colormap(seis);caxis([-0.01,0.01]);
 set(gca, 'YDir','normal')
 ylabel('Slowness (s/deg)','Fontsize',20);
@@ -340,7 +341,7 @@ annotation(gcf,'ellipse',...
 print(gcf,'-depsc','-r400','syn_ves_obs_noise6.eps')
 
 
-[ves3] = vespagram(D3-coda,h,s,t,order);
+[ves3] = yc_vespagram(D3-coda,h,s,t,order);
 figure;imagesc(t(1:1401),s,ves3(1:1401,:)');colormap(seis);caxis([-0.01,0.01]);
 set(gca, 'YDir','normal')
 ylabel('Slowness (s/deg)','Fontsize',20);
@@ -364,7 +365,7 @@ annotation(gcf,'ellipse',...
 print(gcf,'-depsc','-r400','syn_ves_pocs_noise6.eps')
 
 
-[ves5] = vespagram(D5-coda,h,s,t,order);
+[ves5] = yc_vespagram(D5-coda,h,s,t,order);
 figure;imagesc(t(1:1401),s,ves5(1:1401,:)');colormap(seis);caxis([-0.01,0.01]);
 set(gca, 'YDir','normal')
 ylabel('Slowness (s/deg)','Fontsize',20);
@@ -426,7 +427,7 @@ xlabel('Noise level (Variance)','Fontsize',20);
 title('Quality V.S. Noise level','Fontsize',20,'color','k');
   set(gca,'Linewidth',2,'Fontsize',20); 
 %   set(AX(2),'Linewidth',2,'Fontsize',20); 
-  print(gcf,'-depsc','-r200','../../Fig/syn-snr-noise.eps'); 
+  print(gcf,'-depsc','-r200','syn-snr-noise.eps'); 
   
 
 

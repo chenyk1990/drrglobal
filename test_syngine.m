@@ -1,14 +1,16 @@
 %% DEMO for using LRR method to reconstruct weak phases in global seismograms
 % initially by Yangkang Chen, 2017
-% Modified by XXXX, 20xx
+% Modified by Wei Chen, 2020
 % 
 clc;clear;close all;
+
+addpath(genpath('./'));
 
 %% part I
 D=zeros(36903,47);
 h=zeros(47,1);
 for i=0:46
-    tmp=strcat('syngine-data-',num2str(i),'.mat');
+    tmp=strcat('data/syngine-data-',num2str(i),'.mat');
     load(tmp);
 %     figure(1);plot(data);pause(0.1);
     D(:,i+1)=data(:);

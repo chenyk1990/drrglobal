@@ -8,7 +8,7 @@ clc;clear;close all;
 D=zeros(2000,20);
 h=zeros(20,1);
 for i=0:19
-    tmp=strcat('syn-mp-',num2str(i),'.mat');
+    tmp=strcat('data/syn-mp-',num2str(i),'.mat');
     load(tmp);
 %     figure(1);plot(data);pause(0.1);
     D(:,i+1)=data(:);
@@ -38,7 +38,7 @@ print(gcf,'-depsc','-r400','syn_main.eps')
 D0=zeros(2000,20);
 h0=zeros(20,1);
 for i=0:19
-    tmp=strcat('syn-mp-coda-',num2str(i),'.mat');
+    tmp=strcat('data/syn-mp-coda-',num2str(i),'.mat');
     load(tmp);
 %     figure(1);plot(data);pause(0.1);
     D0(:,i+1)=data(:);
